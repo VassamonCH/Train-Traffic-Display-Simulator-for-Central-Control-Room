@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Railway Control System V3</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <aside class="sidebar-dispatch">
+        <div class="sidebar-header">
+          <i class="pulse"></i>
+          <h2>SYSTEM PANEL</h2>
+        </div>
+        <div class="dispatch-scroll-area">
+          <div class="section-label">CONTROL MENU</div>
+
+          <div class="dispatch-card">
+            <div class="card-row">
+              <span class="t-id">F STATUS</span>
+            </div>
+            <div class="card-row">
+              <select id="fIdSelect"></select>
+              <select id="fStatusSelect"></select>
+            </div>
+            <button class="dispatch-btn release" onclick="window.applyFStatus()">Apply F</button>
+          </div>
+
+          <div class="dispatch-card">
+            <div class="card-row">
+              <span class="t-id">T STATUS</span>
+            </div>
+            <div class="card-row">
+              <select id="tIdSelect"></select>
+              <select id="tStatusSelect"></select>
+            </div>
+            <button class="dispatch-btn release" onclick="window.applyTStatus()">Apply T</button>
+          </div>
+
+          <div class="dispatch-card">
+            <div class="card-row">
+              <span class="t-id">TURNOUT VIEW</span>
+            </div>
+            <div class="card-row">
+              <select id="switchIdSelect"></select>
+              <span class="turnout-sign" id="switchViewLabel">-</span>
+            </div>
+            <button class="dispatch-btn release" onclick="window.applyTurnoutView()">Apply Switch</button>
+          </div>
+
+          <div class="dispatch-card">
+            <div class="card-row">
+              <span class="t-id">PLI STATUS</span>
+            </div>
+            <div class="card-row">
+              <select id="pliIdSelect"></select>
+              <select id="pliStatusSelect">
+                <option value="STOP">STOP</option>
+                <option value="PROCEED">PROCEED</option>
+              </select>
+            </div>
+            <button class="dispatch-btn release" onclick="window.applyPliStatus()">Apply PLI</button>
+          </div>
+
+          <div class="dispatch-card">
+            <div class="card-row">
+              <span class="t-id">SET ROUTE</span>
+            </div>
+            <div class="card-row">
+              <select id="routeStartPliSelect"></select>
+              <select id="routeEndPliSelect"></select>
+            </div>
+            <div class="card-row">
+              <button class="dispatch-btn release" onclick="window.applyRouteFromPli()">Set Route</button>
+            </div>
+            <div class="card-row">
+              <button class="dispatch-btn release" onclick="window.runTrain()">Run Train</button>
+            </div>
+            <div class="card-row">
+              <button class="dispatch-btn hold" onclick="window.clearRoute()">Clear Route</button>
+            </div>
+            <div class="tiny-label" id="routeMatchLabel">READY</div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="main-dashboard">
+        <header class="ops-header">
+          <div class="ops-title">
+            <div class="logo"></div>
+            <div>
+              <h1>Train Traffic Display Simulator for Central Control Room</h1>
+              <div id="statusIndicator">● SYSTEM ACTIVE</div>
+            </div>
+          </div>
+
+          <div class="ops-meta">
+            <div class="time-box">
+              <span class="tiny-label">SYSTEM CLOCK</span>
+              <div id="digitalClock" class="clock">00:00:00</div>
+            </div>
+          </div>
+        </header>
+
+        <div class="monitor-frame">
+          <div class="frame-header">
+            <span class="tag">LIVE_MONITOR</span>
+            <span class="track-id">F1 - F34 BLOCK STATUS</span>
+          </div>
+          <div class="canvas-viewport">
+            <canvas id="trackCanvas"></canvas>
+          </div>
+          <!-- <div class="signal-legend">
+            <div class="legend-item">
+              <span class="lamp white"></span> PROCEED
+            </div>
+            <div class="legend-item">
+              <span class="lamp red"></span> STOP / RED
+            </div>
+            <div class="legend-item">
+              <span class="lamp occupied"></span> TRACK OCCUPIED
+            </div>
+          </div> -->
+        </div>
+
+        <footer class="interlock-section">
+          <div class="section-label"></div>
+        </footer>
+      </section>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

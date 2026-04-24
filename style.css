@@ -1,0 +1,344 @@
+:root {
+    --bg-dark: #05070a;
+    --panel-bg: #0c111d;
+    --accent-cyan: #00f2ff;
+    --accent-orange: #f97316;
+    --border-color: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #64748b;
+    --glow: rgba(0, 242, 255, 0.4);
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar-dispatch {
+    width: 320px;
+    background: var(--panel-bg);
+    border-right: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-header h2 { font-size: 1.2rem; margin: 0; letter-spacing: 2px; }
+
+/* Main Dashboard Styling */
+.main-dashboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    background-image: radial-gradient(circle at 50% 50%, #0f172a 0%, #05070a 100%);
+}
+
+.ops-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.5);
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* Monitor Frame */
+.monitor-frame {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.frame-header {
+    padding: 10px 15px;
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.canvas-viewport {
+    padding: 40px 20px;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Switch Grid */
+.switch-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.t-btn {
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 15px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono';
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.t-btn:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+.t-btn.active-turnout {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 15px var(--glow);
+    text-shadow: 0 0 5px var(--accent-cyan);
+}
+
+/* Small Detail Tags */
+.tiny-label {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.turnout-sign {
+    min-width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono';
+    color: #0a32ff;
+    background: #e2e8f0;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+}
+
+/* --- New Buttons Design --- */
+.mode-button-new {
+    background: #111827;
+    border: 2px solid #334155;
+    color: #f8fafc;
+    padding: 10px 25px;
+    font-family: 'JetBrains Mono';
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 0 #000;
+}
+
+.mode-button-new:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #000;
+}
+
+.mode-button-new.manual { border-color: var(--cyan); color: var(--cyan); }
+.mode-button-new.auto { border-color: var(--orange); color: var(--orange); }
+
+.mode-led {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.mode-led.manual { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.mode-led.auto { background: var(--orange); box-shadow: 0 0 10px var(--orange); animation: pulse 1s infinite; }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* --- Dispatch Sidebar Cards --- */
+.dispatch-card {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-left: 4px solid #fff;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.t-id { font-weight: 800; font-size: 1.1rem; color: #f1f5f9; }
+.t-status { font-size: 0.7rem; font-family: 'JetBrains Mono'; }
+
+.dispatch-card select {
+    flex: 1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.dispatch-btn {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'Rajdhani';
+    text-transform: uppercase;
+}
+
+.dispatch-btn.hold { background: #ef4444; color: white; }
+.dispatch-btn.release { background: #10b981; color: white; }
+
+.dispatch-scroll-area {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.interlock-section {
+    padding: 10px 0;
+}
+
+.section-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* สไตล์พื้นฐานของปุ่ม Mode */
+.mode-button-new {
+    background: #111827;
+    border: 2px solid #334155;
+    color: #f8fafc;
+    padding: 10px 25px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 0 #000; /* ทำให้ปุ่มดูนูนขึ้น */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mode-button-new:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #000;
+}
+
+/* สถานะ Manual (Cyan) */
+.mode-button-new.manual {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 4px 0 #000, 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+/* สถานะ Auto (Orange + Pulse) */
+.mode-button-new.auto {
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+    box-shadow: 0 4px 0 #000, 0 0 15px rgba(249, 115, 22, 0.2);
+}
+
+/* LED Indicator ในปุ่ม */
+.mode-led {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #334155; /* ปิด */
+}
+
+.mode-led.manual {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.mode-led.auto {
+    background: var(--accent-orange);
+    box-shadow: 0 0 10px var(--accent-orange);
+    animation: led-pulse 1.5s infinite;
+}
+
+@keyframes led-pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ปุ่มจองเส้นทาง (Route Button) */
+.r-btn {
+    background: #1e293b;
+    border: 1px solid #475569;
+    color: #94a3b8;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: all 0.2s;
+}
+
+.r-btn.reserved {
+    background: rgba(0, 242, 255, 0.2);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+/* ปุ่มสับราง (Turnout Button) */
+.t-btn.active {
+    background: #f59e0b; /* สีส้มทองเมื่อสับไปทางแยก */
+    border-color: #fbbf24;
+    color: #fff;
+}
+
+#trackCanvas {
+    background: #0f172a;
+    border-radius: 8px;
+    width: 90%;
+    /* ปรับมุมมองเอียง (Isometric) */
+    transform: perspective(1000px) rotateX(15deg);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    transition: transform 0.5s ease;
+}
